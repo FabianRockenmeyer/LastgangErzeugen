@@ -22,7 +22,8 @@ Partial Class Lastgang
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.CheckBoxMoFr = New System.Windows.Forms.CheckBox()
         Me.CheckBoxSa = New System.Windows.Forms.CheckBox()
         Me.CheckBoxSo = New System.Windows.Forms.CheckBox()
@@ -35,17 +36,15 @@ Partial Class Lastgang
         Me.TextBoxJahr = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.ButtonNeu = New System.Windows.Forms.Button()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'ProgressBar1
-        '
-        Me.ProgressBar1.Location = New System.Drawing.Point(25, 379)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(157, 23)
-        Me.ProgressBar1.TabIndex = 0
         '
         'CheckBoxMoFr
         '
@@ -154,14 +153,6 @@ Partial Class Lastgang
         Me.Button1.Text = "Eingabe"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'RichTextBox1
-        '
-        Me.RichTextBox1.Location = New System.Drawing.Point(355, 12)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(316, 390)
-        Me.RichTextBox1.TabIndex = 11
-        Me.RichTextBox1.Text = ""
-        '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(112, 287)
@@ -180,15 +171,71 @@ Partial Class Lastgang
         Me.Button3.Text = "GibTagAus"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'ButtonNeu
+        '
+        Me.ButtonNeu.Location = New System.Drawing.Point(112, 353)
+        Me.ButtonNeu.Name = "ButtonNeu"
+        Me.ButtonNeu.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonNeu.TabIndex = 12
+        Me.ButtonNeu.Text = "Neu"
+        Me.ButtonNeu.UseVisualStyleBackColor = True
+        '
+        'Chart1
+        '
+        Me.Chart1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        ChartArea1.CursorX.IsUserSelectionEnabled = True
+        ChartArea1.CursorY.IsUserSelectionEnabled = True
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Me.Chart1.Location = New System.Drawing.Point(223, 12)
+        Me.Chart1.Name = "Chart1"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Size = New System.Drawing.Size(448, 390)
+        Me.Chart1.TabIndex = 13
+        Me.Chart1.Text = "Chart1"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"G0 - Gewerbe allgemein", "G1 - Gewerbe werktags 8 - 18", "G2 - Gewerbe Abendstunden", "G3 - Gewerbe Durchlaufend", "G4 - Laden/Friseur", "G5 - Bäckerei mit Backstube", "G6 - Wochenendbetrieb", "L0 - Landwirtschaft allgemein", "L1 - Landwirtschaft Milch", "L2 - Landwirtschaft sonstige"})
+        Me.ComboBox1.Location = New System.Drawing.Point(25, 31)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(192, 24)
+        Me.ComboBox1.TabIndex = 15
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(87, 382)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox1.TabIndex = 16
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(30, 385)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(55, 17)
+        Me.Label5.TabIndex = 17
+        Me.Label5.Text = "Summe"
+        '
         'Lastgang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDark
         Me.ClientSize = New System.Drawing.Size(683, 414)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.Chart1)
+        Me.Controls.Add(Me.ButtonNeu)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.RichTextBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.TextBoxJahr)
@@ -201,15 +248,13 @@ Partial Class Lastgang
         Me.Controls.Add(Me.CheckBoxSo)
         Me.Controls.Add(Me.CheckBoxSa)
         Me.Controls.Add(Me.CheckBoxMoFr)
-        Me.Controls.Add(Me.ProgressBar1)
         Me.Name = "Lastgang"
         Me.Text = "Form6"
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents CheckBoxMoFr As CheckBox
     Friend WithEvents CheckBoxSa As CheckBox
     Friend WithEvents CheckBoxSo As CheckBox
@@ -222,7 +267,11 @@ Partial Class Lastgang
     Friend WithEvents TextBoxJahr As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Button1 As Button
-    Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
+    Friend WithEvents ButtonNeu As Button
+    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label5 As Label
 End Class
